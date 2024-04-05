@@ -80,7 +80,12 @@ function checkout() {
 
     displayCart();
 
-    alert('¡Gracias por su compra! 😃');
+    Swal.fire({
+        title: '¡Gracias por tu compra!',
+        text: 'Tu pedido ha sido procesado con éxito.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
 }
 
 loadCart();
