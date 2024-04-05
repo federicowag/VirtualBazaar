@@ -31,7 +31,6 @@ function displayCart() {
     calculateTotal();
 }
 
-
 function calculateTotal() {
     let cartTotal = 0;
     cart.forEach(item => {
@@ -42,7 +41,6 @@ function calculateTotal() {
     const totalElement = document.getElementById('cart-total');
     totalElement.textContent = `Total: $${cartTotal.toFixed(2)}`;
 }
-
 
 function addToCart(name, price, image) {
     let productExists = false;
@@ -68,7 +66,6 @@ function addToCart(name, price, image) {
     displayCart();
 }
 
-
 function removeFromCart(index) {
     cart.splice(index, 1);
 
@@ -77,9 +74,7 @@ function removeFromCart(index) {
     displayCart();
 }
 
-
 function checkout() {
-
     cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
 
