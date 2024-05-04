@@ -8,6 +8,32 @@ function loadCart() {
     }
 }
 
+function fetchAdditionalData() {
+    fetch('https://api.example.com/product-info')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo obtener la información adicional sobre los productos.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            products.forEach(product => {
+                const additionalInfo = data[product.name];
+                if (additionalInfo) {
+                    product.additionalInfo = additionalInfo;
+                }
+            });
+            displayProducts();
+        })
+        .catch(error => {
+            const errorMessage = 'Error al obtener información adicional sobre los productos'
+            const errorElement = document.getElementById('error-message');
+            errorElement.innerText = errorMessage;
+        });
+}
+
+document.getElementById('more-info-btn').addEventListener('click', fetchAdditionalData);
+
 function displayCart() {
     const cartContainer = document.getElementById('cart-container');
     cartContainer.innerHTML = '';
